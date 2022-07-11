@@ -1,0 +1,43 @@
+create database address_book_service;
+use address_book_service;
+create table address_book(firstName varchar(25) not null,lastName varchar(25) not null,city varchar(15) not null,
+state varchar(15) not null,zip varchar(6) not null,phoneNo varchar(20) not null,primary key(firstName));
+desc address_book;
+alter table address_book add address varchar(45); 
+alter table address_book add email varchar(25);
+insert  into address_book(firstName,lastname,address,city,state,zip,phoneNo,email) 
+values ('Bhagyashri','Nagrale','Kondapur','Hyderabad','Telangana','500976','8866442259','bhagyashri@gmail.com'), 
+('Ankita','Khobragede',' Ambedkar layout','Nagpur','Maharastra','410206','8834553580','ankita@gmail.com'), 
+('Diksha','Chahare','Manish nagra','Nagpur','Maharastra','415001','8097524672','diksha3@gmail.com'), 
+('Vicky','Julme',' Sasti colony ','Chandrapur','Maharashtra','110068','7233454393','vicky@gmail.com');
+
+select * from address_book;
+ UPDATE address_book SET phoneNo = '9284715144'  WHERE firstName = 'Bhagyashri';
+  UPDATE address_book SET lastName = 'Julme' WHERE firstName = 'Ankita';
+  select * from address_book;
+  
+  DELETE FROM `address_book` WHERE `firstName` = 'Bhagyashri';
+  select * from address_book;
+  
+  SELECT * FROM address_book WHERE city = 'Nagpur';
+  
+  SELECT * FROM address_book WHERE state = 'Maharastra';
+  
+  SELECT city, COUNT(*) FROM address_book GROUP BY city;
+  
+   SELECT state, COUNT(*) FROM address_book GROUP BY state;
+   
+   SELECT firstName,city FROM address_book ORDER BY firstName;
+   
+   alter table address_book add type varchar(30) after lastName;
+   
+   update  address_book set type='family' where firstName ='Bhagyashri';
+   
+   update  address_book set type='friend' where firstName ='Ankita';
+   
+   update  address_book set type='profession ' where firstName ='Diksha';
+   
+   select * from address_book;
+   
+   select count(type) AS NumberOfcontact_person FROM address_book;
+   
